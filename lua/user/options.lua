@@ -1,45 +1,55 @@
-local options = {
-  backup = false,                          -- creates a backup file
-  writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-  swapfile = false,                        -- creates a swapfile
-  clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
-  cmdheight = 2,                           -- more space in the neovim command line for displaying messages
-  completeopt = { "menuone", "noselect" }, -- mostly just for cmp
-  conceallevel = 0,                        -- so that `` is visible in markdown files
-  fileencoding = "utf-8",                  -- the encoding written to a file
-  hlsearch = true,                         -- highlight all matches on previous search pattern
-  ignorecase = false,                      -- ignore case in search patterns
-  mouse = "a",                             -- allow the mouse to be used in neovim
-  pumheight = 10,                          -- pop up menu height
-  showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
-  showtabline = 2,                         -- always show tabs
-  smartcase = true,                        -- smart case
-  smartindent = true,                      -- make indenting smarter again
-  splitbelow = true,                       -- force all horizontal splits to go below current window
-  splitright = true,                       -- force all vertical splits to go to the right of current window
-  timeoutlen = 1000,                        -- time to wait for a mapped sequence to complete (in milliseconds)
-  undofile = true,                         -- enable persistent undo
-  updatetime = 300,                        -- faster completion (4000ms default)
-  expandtab = true,                        -- convert tabs to spaces
-  shiftwidth = 2,                          -- the number of spaces inserted for each indentation
-  tabstop = 2,                             -- insert 2 spaces for a tab
-  cursorline = false,                       -- highlight the current line
-  number = true,                           -- set numbered lines
-  relativenumber = false,                  -- set relative numbered lines
-  numberwidth = 4,                         -- set number column width
-  signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
-  wrap = false,                            -- display lines as one long line
-  scrolloff = 8,
-  sidescrolloff = 8,
-  guifont = "monospace:h17",               -- the font used in graphical neovim applications
-  termguicolors = true,                    -- set term gui colors (most terminals support this)
-}
+local o = vim.opt
 
-vim.opt.shortmess:append("c")
-vim.opt.iskeyword:append("-")              -- consider the dash character as part of the word
+-- Display
+o.number = true                           -- show line numbers
+o.numberwidth = 4                         -- line number column width
+o.relativenumber = true                   -- relative numbers
+o.showtabline = 2                         -- always show tabs
+o.smartindent = true                      -- make indenting smarter again
+o.scrolloff = 8                           -- min number of lines in context
+o.sidescrolloff = 8                       -- min number of lines in context
+o.signcolumn = "yes"                      -- show the sign column
+o.showmode = false                        -- seing the mode name like -- INSERT --
+o.guifont = "monospace:h17"               -- the font used in graphical neovim applications
+o.cursorline = false                      -- highlight the current line
+o.syntax = "on"                           -- allow syntax highlighting
+o.termguicolors = true                    -- terminal GUI colors
+o.pumheight = 10                          -- pop up menu height
+o.wrap = false                            -- display lines as one long line
+o.whichwrap:remove('b')                   -- backspace key does not go to previous line
 
-for k, v in pairs(options) do
-  vim.opt[k] = v
-end
+-- File
+o.backup = false                          -- creates a backup file
+o.writebackup = false                     -- if a file is being edited by another program then it is not allowed to be edited
+o.swapfile = false                        -- creates a swapfile
+o.undofile = false                        -- no undo after file quit
+o.encoding = "utf-8"                      -- string encoding
+o.fileencoding = "utf-8"                  -- file encoding
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
+-- Search
+o.ignorecase = false                      -- ignore case in search patterns
+o.smartcase = true                        -- smart case
+o.hlsearch = true
+
+-- Whitespace
+o.expandtab = true                        -- convert tabs to spaces
+o.shiftwidth = 2                          -- the number of spaces inserted for each indentation
+o.tabstop = 2
+
+-- Window split
+o.splitbelow = true                       -- force all horizontal splits to go below current window
+o.splitright = true                       -- force all vertical splits to go to the right of current window
+
+-- Other
+o.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
+o.cmdheight = 2                           -- more space in the neovim command line for displaying messages
+o.completeopt = { "menuone", "noselect" } -- mostly just for cmp
+o.conceallevel = 0                        -- have `` is visible in markdown files
+o.mouse = "r"                             -- copy paste with the mouse middle button
+o.timeoutlen = 1000                       -- time to wait for a mapped sequence to complete (in milliseconds)
+o.updatetime = 300                        -- faster completion
+o.shortmess:append("c")
+o.iskeyword:append("-")                   -- consider the dash character as part of the word
+-- o.instant_username = "stephane"        -- my username for the instant collaborative editing plugin TODO fails here - where to set it ?
+
+vim.cmd "highlight MatchParen gui=underline guibg=NONE guifg=NONE"
