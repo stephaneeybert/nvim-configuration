@@ -7,7 +7,7 @@ local actions = require "telescope.actions"
 
 telescope.setup {
   defaults = {
-    layout_strategy = "vertical",
+    layout_strategy = "horizontal",
     mappings = {
       i = {
         ["<C-n>"] = actions.cycle_history_next,
