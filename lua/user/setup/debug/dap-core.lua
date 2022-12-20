@@ -84,9 +84,10 @@ end
 
 local function configureDebuggerJava(dap)
   dap.adapters.java = {
-    type = "server",
-    host = "127.0.0.1",
-    port = 8080,
+    type = "executable",
+    command = "java",
+    args = { "-jar",
+      os.getenv("HOME") .. "/.local/share/nvim/lsp-debuggers/jdtls/com.microsoft.java.debug.plugin-0.37.0.jar" }
   }
   -- The configuration must be named: java
   dap.configurations.java = {

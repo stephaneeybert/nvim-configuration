@@ -83,7 +83,7 @@ fi
 if [ ! -d $HOME/.local/share/nvim/lsp_servers/jdtls/ ]; then
   printf "\nInstalling the LSP servers"
   export NVIM_LSP_SERVERS=$HOME/.local/share/nvim/lsp_servers
-  mkdir -p ~/.local/share/nvim/lsp_servers/
+  mkdir -p $HOME/.local/share/nvim/lsp_servers/
   nvim --headless -c "LspInstall --sync sumneko_lua jsonls tsserver jdtls " -c q
 fi
 
@@ -152,6 +152,17 @@ if [ ! -f $HOME/.local/share/nvim/lsp-debuggers/vscode-chrome-debug/out/src/chro
   cd vscode-chrome-debug
   npm install
   npm run build
+fi
+
+if [ ! -f $HOME/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar ]; then
+  printf "\nInstalling the Java debug adapter\n"
+  TEMP_DIR="$(mktemp -d)"
+  cd $TEMP_DIR
+  curl -o jdt-language-server-1.9.0-202203031534.tar.gz https://download.eclipse.org/jdtls/milestones/1.9.0/jdt-language-server-1.9.0-202203031534.tar.gz > /dev/null
+  gzip -d jdt-language-server-1.9.0-202203031534.tar.gz
+  tar -xvf jdt-language-server-1.9.0-202203031534.tar
+  mkdir -f $HOME/.local/share/nvim/lsp_servers/jdtls/plugins/
+  mv org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar $HOME/.local/share/nvim/lsp_servers/jdtls/plugins/
 fi
 
 if [ ! -f $HOME/.local/share/nvim/lsp-debuggers/jdtls/com.microsoft.java.debug.plugin-0.37.0.jar ]; then
