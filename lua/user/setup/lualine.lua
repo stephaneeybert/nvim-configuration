@@ -48,7 +48,6 @@ local location = {
   padding = 0,
 }
 
--- cool function for progress
 local progress = function()
   local current_line = vim.fn.line "."
   local total_lines = vim.fn.line "$"
@@ -69,7 +68,6 @@ lualine.setup {
     theme = "auto",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-    -- disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "toggleterm" },
     disabled_filetypes = { "alpha", "dashboard", "toggleterm" },
     always_divide_middle = true,
   },
