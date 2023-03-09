@@ -80,11 +80,23 @@ then
   npm install -g --save-dev --save-exact prettier
 fi
 
+export NVIM_LSP_SERVERS=$HOME/.local/share/nvim/lsp_servers
 if [ ! -d $HOME/.local/share/nvim/lsp_servers/jdtls/ ]; then
-  printf "\nInstalling the LSP servers"
-  export NVIM_LSP_SERVERS=$HOME/.local/share/nvim/lsp_servers
+  printf "\nInstalling an LSP server"
   mkdir -p $HOME/.local/share/nvim/lsp_servers/
-  nvim --headless -c "LspInstall --sync sumneko_lua jsonls tsserver jdtls " -c q
+  nvim --headless -c "LspInstall --sync jdtls" -c q
+fi
+if [ ! -d $HOME/.local/share/nvim/lsp_servers/tsserver/ ]; then
+  printf "\nInstalling an LSP server"
+  nvim --headless -c "LspInstall --sync tsserver" -c q
+fi
+if [ ! -d $HOME/.local/share/nvim/lsp_servers/jsonls/ ]; then
+  printf "\nInstalling an LSP server"
+  nvim --headless -c "LspInstall --sync jsonls" -c q
+fi
+if [ ! -d $HOME/.local/share/nvim/lsp_servers/lua_ls/ ]; then
+  printf "\nInstalling an LSP server"
+  nvim --headless -c "LspInstall --sync lua_ls" -c q
 fi
 
 if ! command -v lazygit &> /dev/null
@@ -107,7 +119,7 @@ if [ ! -f ${CONFIG} ]; then
   touch $CONFIG
 fi
 if ! grep -q "\[core\]" $CONFIG; then
-  printf "\nAdding core section to the $CONFIG file\n"
+  printf "\nAdding [core] section to the $CONFIG file\n"
   echo "[core]" | tee --append $CONFIG
 fi
 if ! grep -q "\[delta\]" $CONFIG; then
@@ -115,7 +127,7 @@ if ! grep -q "\[delta\]" $CONFIG; then
   echo "[delta]" >> $CONFIG
 fi
 if ! grep -q "pager = delta" $CONFIG; then
-  printf "Adding the pager in the core section"
+  printf "Adding the pager in the [core] section"
   sed -e '/\[core\]/a\' -e "\  pager = delta" $CONFIG > $EDITED
   mv -f $EDITED $CONFIG
 fi

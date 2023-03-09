@@ -93,6 +93,7 @@ keymap("n", "<leader>ga", "<cmd>Gitsigns blame_line<CR>", opts) -- show the git 
 keymap("n", "<leader>ft", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 -- Removing extra blank lines
 keymap("n", "<leader>fl", "<cmd>lua require('lua.user.commands').consolidate_blank_lines()<CR>", opts)
+keymap("n", "<leader>pc", "<cmd>lua require('lua.user.commands').upgrade_php_constructor()<CR>", opts)
 
 -- Closing and quitting
 keymap("n", "<A-w>", "<Esc>:Bwipeout<CR>", opts)

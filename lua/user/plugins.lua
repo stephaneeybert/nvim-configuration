@@ -43,8 +43,8 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
 
   -- Commons plugins used by other plugins
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
+  use "nvim-lua/popup.nvim"          -- An implementation of the Popup API from vim in Neovim
+  use "nvim-lua/plenary.nvim"        -- Useful lua functions used by lots of plugins
   use "kyazdani42/nvim-web-devicons" -- Icons for the file types
   use "antoinemadec/FixCursorHold.nvim"
 
@@ -67,21 +67,25 @@ return packer.startup(function(use)
   use "catppuccin/nvim"
 
   -- Snippet engine and collections
-  use "L3MON4D3/LuaSnip" -- A snippet engine
+  use "L3MON4D3/LuaSnip"             -- A snippet engine
   use "rafamadriz/friendly-snippets" -- A ton of snippets for different languages
 
   -- Various
-  use "phaazon/hop.nvim" -- Hop to lines or words
+  use "phaazon/hop.nvim"                -- Hop to lines or words
   use "jbyuki/instant.nvim"
-  use "folke/which-key.nvim" -- Help popup with all the keymaps
-  use "windwp/nvim-autopairs" -- Automatic add closing characters to opening ones () {} "" ''
-  use "xiyaowong/nvim-cursorword" -- Highlight the current word
+  use "folke/which-key.nvim"            -- Help popup with all the keymaps
+  use "windwp/nvim-autopairs"           -- Automatic add closing characters to opening ones () {} "" ''
+  use "xiyaowong/nvim-cursorword"       -- Highlight the current word
   use "bronson/vim-trailing-whitespace" -- Highlight trailing whitespaces
-  use "norcalli/nvim-colorizer.lua" -- Colorize color codes
+  use "norcalli/nvim-colorizer.lua"     -- Colorize color codes
 
   -- Handling buffers and tabs in a line above windows
-  use "akinsho/bufferline.nvim"
-  use "moll/vim-bbye" -- keep windows when closing buffers
+  use {
+    "akinsho/bufferline.nvim",
+    tag = "v3.*",
+    requires = "nvim-tree/nvim-web-devicons"
+  }
+  use "moll/vim-bbye"    -- keep windows when closing buffers
   use "matbme/JABS.nvim" -- a buffer switcher in a popup window
 
   -- File tree explorer
@@ -96,12 +100,12 @@ return packer.startup(function(use)
   use "folke/trouble.nvim"
 
   -- Auto completion
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- with buffer completions
-  use "hrsh7th/cmp-path" -- with path completions
-  use "hrsh7th/cmp-cmdline" -- with cmdline completions
+  use "hrsh7th/nvim-cmp"         -- The completion plugin
+  use "hrsh7th/cmp-buffer"       -- with buffer completions
+  use "hrsh7th/cmp-path"         -- with path completions
+  use "hrsh7th/cmp-cmdline"      -- with cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- with snippet completions
-  use "hrsh7th/cmp-nvim-lsp" -- LSP integration
+  use "hrsh7th/cmp-nvim-lsp"     -- LSP integration
 
   -- Telescope - searching for files and patterns
   use {

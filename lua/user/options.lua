@@ -53,3 +53,7 @@ o.iskeyword:append("-")                   -- consider the dash character as part
 -- o.instant_username = "stephane"        -- my username for the instant collaborative editing plugin TODO fails here - where to set it ?
 
 vim.cmd "highlight MatchParen gui=underline guibg=NONE guifg=NONE"
+
+-- Add the nvim path to the package path so as to be able to use nvim from any directory location
+local HOME = os.getenv("HOME")
+package.path = HOME .. "/.config/nvim/?.lua;" .. package.path
