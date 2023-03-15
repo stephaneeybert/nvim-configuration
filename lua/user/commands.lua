@@ -38,7 +38,7 @@ end
 M.upgrade_php_constructor = function()
   vim.fn.setreg('a', vim.fn.expand('%:t:r'))
   vim.cmd "execute '%s/function ' . getreg('a') . '/function __construct/'"
-  vim.cmd "execute 'w'"
+  vim.cmd "execute 'wn'"
 end
 
 return M
