@@ -7,7 +7,7 @@ end
 treesitter.setup {
   sync_install = false, -- installing languages asynchronously
   ignore_install = { "haskell", "go" }, -- the languages not to install
-  ensure_installed = { "vim", "c", "cpp", "lua", "python", "rust", "typescript", "help", "cmake", "javascript", "typescript", "java" }, -- the languages to install
+  ensure_installed = { "vim", "c", "cpp", "lua", "python", "rust", "typescript", "cmake", "javascript", "typescript", "java" }, -- the languages to install
   autopairs = {
     enable = true
   },
