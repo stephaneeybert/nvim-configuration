@@ -67,7 +67,7 @@ keymap("n", "<leader>hw", "<cmd>HopWord<CR>", opts)
 keymap("n", "<leader>hp", "<cmd>HopPattern<CR>", opts)
 
 -- Toggling the file tree explorer
-keymap("n", "<leader>e", ":NeoTreeFocusToggle<CR>", opts)
+keymap("n", "<leader>e", ":Neotree toggle<CR>", opts)
 
 -- Semantic highlighting
 keymap("n", "<leader>sh", "<cmd>SemanticHighlightToggle<CR>", opts)
@@ -90,7 +90,7 @@ keymap("n", "<leader>gr", "<cmd>Gitsigns reset_hunk<CR>", opts) -- show the git 
 keymap("n", "<leader>ga", "<cmd>Gitsigns blame_line<CR>", opts) -- show the git change
 
 -- Formatting the source code
-keymap("n", "<leader>ft", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+keymap("n", "<leader>ft", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 -- Removing extra blank lines
 keymap("n", "<leader>fl", "<cmd>lua require('lua.user.commands').consolidate_blank_lines()<CR>", opts)
 keymap("n", "<leader>pp", "<cmd>lua require('lua.user.commands').upgrade_php_constructor()<CR>", opts)
