@@ -1,10 +1,15 @@
 # nvim-configuration
 
-My custom configuration based on the vim from scratch videos series at https://github.com/LunarVim/Neovim-from-scratch.git
+My custom configuration based on the [Vim from Scratch](https://github.com/LunarVim/Neovim-from-scratch.git) videos series
+
+## Installation
 
 Remove the existing vim if any
+
 sudo apt-get remove neovim
+```
 mv ~/.config/nvim ~/trash
+```
 
 Install the latest version
 mkdir -p ~/programs/nvim;
