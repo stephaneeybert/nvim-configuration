@@ -21,7 +21,7 @@ if not status_ok then
   return
 end
 
--- Synchronize the plugins when saving the plugins.lua file
+-- Synchronize the plugins when saving the plugins file
 vim.cmd [[
   augroup packer_user_config
     autocmd!
@@ -44,7 +44,7 @@ return packer.startup(function(use)
 
   -- Commons plugins used by other plugins
   use "nvim-lua/popup.nvim"          -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim"        -- Useful lua functions used by lots of plugins
+  use "nvim-lua/plenary.nvim"        -- Some lua functions used by lots of plugins
   use "kyazdani42/nvim-web-devicons" -- Icons for the file types
   use "antoinemadec/FixCursorHold.nvim"
 
