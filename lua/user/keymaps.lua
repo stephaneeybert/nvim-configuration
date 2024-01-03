@@ -21,7 +21,7 @@ vim.g.maplocalleader = " "
 
 -- Normal mode --
 
--- Move to position 0 instead of to the first character of the line
+-- Move to position 0 in the window instead of to the first character of the screen line
 keymap("n", "^", "0", opts)
 
 -- Redo after an undo
